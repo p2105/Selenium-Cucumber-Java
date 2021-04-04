@@ -7,15 +7,15 @@ import org.openqa.selenium.WebDriver;
 
 public class GivenSteps {
 
-    WebDriver driver;
+    private final WebDriver driver;
 
-    public GivenSteps(SharedStepDefinition sharedStepDefinition){
-        driver = sharedStepDefinition.getDriver();
+    public GivenSteps(BaseStepDefinition baseStepDefinition) {
+        driver = baseStepDefinition.getDriver();
     }
 
 
     @Given("John is on the Login Page")
-    public void is_on_the_login_page() {
+    public void userIsOnTheLoginPage() {
         String url = PageObjectManager.getLoginFlow(driver).getAppUrl();
         PageObjectManager.getLoginPage(driver).launchCyclos(url);
     }

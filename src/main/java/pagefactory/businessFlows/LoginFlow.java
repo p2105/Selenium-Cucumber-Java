@@ -1,4 +1,4 @@
-package businessFlows;
+package pagefactory.businessFlows;
 
 import managers.FileReaderManager;
 import managers.PageObjectManager;

@@ -6,12 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import enums.DriverType;
-
 
 public class ConfigFileReader {
-    private Properties properties;
-    private final String propertyFilePath = "src/test/resources/configs/Configuration.properties";
+    private final Properties properties;
+    private final String propertyFilePath = "src/configs/Configuration.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
@@ -49,10 +47,10 @@ public class ConfigFileReader {
         return 30;
     }
 
-    public DriverType getBrowser() {
+    public String getBrowser() {
         String browserName = properties.getProperty("browser");
-        if (browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
-        else if (browserName.equalsIgnoreCase("firefox")) return DriverType.FIREFOX;
+        if (browserName == null || browserName.equals("chrome")) return "CHROME";
+        else if (browserName.equalsIgnoreCase("firefox")) return "FIREFOX";
         else
             throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " + browserName);
     }
@@ -82,7 +80,7 @@ public class ConfigFileReader {
         return appUrl;
     }
 
-    public int getMaxWaitInSeconds(){
+    public int getMaxWaitInSeconds() {
         int maxWait = Integer.parseInt(properties.getProperty("maxWait"));
         return maxWait;
     }

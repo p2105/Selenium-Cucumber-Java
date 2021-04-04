@@ -43,7 +43,7 @@ public class LoginPage extends WebElementHelperMethods {
         clickElement(lnkRegisterANewUserCss);
     }
 
-    public boolean loginUnsuccessful(){
+    public boolean isLoginUnsuccessful(){
         waitForElement(divLoginUnsuccessfulMessage);
         if(isElementVisible(divLoginUnsuccessfulMessage)){
             highlightElement(driver.findElement(divLoginUnsuccessfulMessage));
@@ -52,7 +52,7 @@ public class LoginPage extends WebElementHelperMethods {
         else{return false;}
     }
 
-    public boolean loginSuccessful(){
+    public boolean isLoginSuccessful(){
         waitForElement(lnkBanking);
         if(isElementVisible(lnkBanking)){
             highlightElement(driver.findElement(lnkBanking));

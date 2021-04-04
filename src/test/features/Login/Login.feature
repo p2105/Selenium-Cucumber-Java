@@ -6,6 +6,6 @@ Feature: Test Login Scenarios
     When he enters the "<user_id>" and "<password>"
     Then login should be "<login_result>"
     Examples:
-      | user_id | password       | login_result |
-      | Gavhane | wrong password | unsuccessful |
-      | Gavhane | prash_333      | successful   |
+      | user_id | password  | login_result |
+      | Gavhane | prash_333 | unsuccessful |
+      | Gavhane | prash_333 | successful   |

@@ -1,16 +1,18 @@
 package step_definitions;
 
-import enums.DriverType;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import managers.FileReaderManager;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class SharedStepDefinition {
+public class BaseStepDefinition {
 
     WebDriver driver;
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
@@ -23,7 +25,13 @@ public class SharedStepDefinition {
     }
 
     @After
-    public void afterScenario(){
+    public void afterScenario(Scenario scenario){
+        if (scenario.isFailed()) {
+            // Take a screenshot...
+            final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+            // embed it in the report.
+            scenario.attach(screenshot, "image/png", "failure screenshot");
+        }
         System.out.println("Inside After hooks - Closing driver");
         closeDriver();
     }
@@ -39,11 +47,11 @@ public class SharedStepDefinition {
     }
 
     private WebDriver createLocalDriver() {
-        DriverType driverType = FileReaderManager.getConfigReader().getBrowser();
-        switch (driverType) {
-            case FIREFOX : driver = new FirefoxDriver();
+        String driverType = FileReaderManager.getConfigReader().getBrowser();
+        switch (driverType.toUpperCase()) {
+            case "FIREFOX" : driver = new FirefoxDriver();
                 break;
-            case CHROME :
+            case "CHROME" :
                 System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getConfigReader().getDriverPath() + "/chromedriver.exe");
                 driver = new ChromeDriver();
                 driver.manage().timeouts().implicitlyWait(FileReaderManager.getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
