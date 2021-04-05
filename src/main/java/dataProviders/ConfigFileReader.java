@@ -7,10 +7,18 @@ import java.io.IOException;
 import java.util.Properties;
 
 
+/**
+ * This class provides a list of methods that can be used to read the properties from the
+ * src/configs/Configuration.properties file.
+ */
 public class ConfigFileReader {
     private final Properties properties;
     private final String propertyFilePath = "src/configs/Configuration.properties";
 
+
+    /**
+     * Instantiates a new Config file reader.
+     */
     public ConfigFileReader() {
         BufferedReader reader;
         try {
@@ -28,6 +36,11 @@ public class ConfigFileReader {
         }
     }
 
+    /**
+     * Gets driver path.
+     *
+     * @return the driver path
+     */
     public String getDriverPath() {
         String driverPath = properties.getProperty("driverPath");
         if (driverPath != null) return driverPath;
@@ -35,33 +48,38 @@ public class ConfigFileReader {
             throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
     }
 
-    public long getImplicitlyWait() {
-        String implicitlyWait = properties.getProperty("implicitlyWait");
-        if (implicitlyWait != null) {
-            try {
-                return Long.parseLong(implicitlyWait);
-            } catch (NumberFormatException e) {
-                throw new RuntimeException("Not able to parse value : " + implicitlyWait + " in to Long");
-            }
-        }
-        return 30;
+    /**
+     * Gets firefox executable path.
+     *
+     * @return the firefox executable path
+     */
+    public String getFirefoxExecutablePath() {
+        String firefoxExecutable = properties.getProperty("pathToFirefoxExecutable");
+        if (firefoxExecutable != null) return firefoxExecutable;
+        else
+            throw new RuntimeException("Firefox executable path not specified in the Configuration.properties file for the Key:pathToFirefoxExecutable");
     }
 
+    /**
+     * Gets browser.
+     *
+     * @return the browser
+     */
     public String getBrowser() {
         String browserName = properties.getProperty("browser");
         if (browserName == null || browserName.equals("chrome")) return "CHROME";
         else if (browserName.equalsIgnoreCase("firefox")) return "FIREFOX";
+        else if (browserName.equalsIgnoreCase("ie")) return "IE";
         else
             throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " + browserName);
     }
 
-
-    public Boolean getBrowserWindowSize() {
-        String windowSize = properties.getProperty("windowMaximize");
-        if (windowSize != null) return Boolean.valueOf(windowSize);
-        return true;
-    }
-
+    /**
+     * Gets app url.
+     *
+     * @param env the env
+     * @return app url
+     */
     public String getAppUrl(String env) {
         String appUrl = "";
         switch (env.toUpperCase()) {
@@ -75,11 +93,27 @@ public class ConfigFileReader {
                 appUrl = properties.getProperty("devUrl");
                 break;
             default:
-                throw new RuntimeException("Application environment " + env.toUpperCase() + " not specified in the Configuration.properties file.");
+                throw new RuntimeException("Application environment " + env.toUpperCase() + " not specified in the " +
+                        "Configuration.properties file.");
         }
         return appUrl;
     }
 
+    /**
+     * Gets log level.
+     *
+     * @return the log level
+     */
+    public String getLogLevel() {
+        return properties.getProperty("logLevel");
+    }
+
+
+    /**
+     * Gets max wait in seconds.
+     *
+     * @return the max wait in seconds
+     */
     public int getMaxWaitInSeconds() {
         int maxWait = Integer.parseInt(properties.getProperty("maxWait"));
         return maxWait;
