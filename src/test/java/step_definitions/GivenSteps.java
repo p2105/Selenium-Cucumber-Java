@@ -5,17 +5,28 @@ import managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 
 
+/**
+ * The type Given steps.
+ */
 public class GivenSteps {
 
-    WebDriver driver;
+    private final WebDriver driver;
 
-    public GivenSteps(SharedStepDefinition sharedStepDefinition){
-        driver = sharedStepDefinition.getDriver();
+    /**
+     * Instantiates a new Given steps.
+     *
+     * @param baseStepDefinition the base step definition
+     */
+    public GivenSteps(BaseStepDefinition baseStepDefinition) {
+        driver = baseStepDefinition.getDriver();
     }
 
 
+    /**
+     * User is on the login page.
+     */
     @Given("John is on the Login Page")
-    public void is_on_the_login_page() {
+    public void userIsOnTheLoginPage() {
         String url = PageObjectManager.getLoginFlow(driver).getAppUrl();
         PageObjectManager.getLoginPage(driver).launchCyclos(url);
     }

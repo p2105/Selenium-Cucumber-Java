@@ -1,57 +1,40 @@
 package managers;
 
-import businessFlows.LoginFlow;
 import org.openqa.selenium.WebDriver;
-import pagefactory.*;
 import pagefactory.Login.LoginPage;
+import pagefactory.businessFlows.LoginFlow;
 
+
+/**
+ * This class provides methods to return all PageObjects and BusinessFlows defined in the pageFactory class.
+ * Every new PageObject or the BusinessFlow must be defined here to be used in StepDefs.
+ */
 
 public class PageObjectManager {
 
+    //Flows
 
-
-    private static LandingPage landingPage;
-    private static LoginPageOld loginPage;
-    private static CreateChildTicket createChildTicket;
-    private static ChangeStatusOfTicket changeStatusOfTicket;
-    private static TicketCreationTab ticketCreationTab;
-    private static VisitUrls visitUrls;
-
-
-    private PageObjectManager()
-    {}
-
-
-    public static LoginFlow getLoginFlow(WebDriver driver){
+    /**
+     * Gets login flow.
+     *
+     * @param driver the driver
+     * @return the login flow
+     */
+    public static LoginFlow getLoginFlow(WebDriver driver) {
         return new LoginFlow(driver);
     }
 
-    public static LandingPage getLandingPage(WebDriver driver){
-//        return (landingPage == null) ? landingPage = new LandingPage(driver) : landingPage;
-        return new LandingPage(driver);
-    }
 
-    public static LoginPageOld getLoginPageOld(WebDriver driver){
+    //Page Objects
 
-//        return (loginPage == null) ? loginPage = new LoginPage(driver) : loginPage;
-        return new LoginPageOld(driver);
-
-    }
-
-    public static LoginPage getLoginPage(WebDriver driver){
+    /**
+     * Gets login page.
+     *
+     * @param driver the driver
+     * @return the login page
+     */
+    public static LoginPage getLoginPage(WebDriver driver) {
         return new LoginPage(driver);
     }
-
-    public static TicketCreationTab getTicketCreationTab(WebDriver driver){
-//        return (ticketCreationTab == null) ? ticketCreationTab = new TicketCreationTab(driver) : ticketCreationTab;
-        return new TicketCreationTab(driver);
-    }
-
-    public static CreateChildTicket createChildTicket(WebDriver driver){
-//        return (createChildTicket == null) ? createChildTicket = new CreateChildTicket(driver) : createChildTicket;
-        return new CreateChildTicket(driver);
-    }
-
-
 
 }
