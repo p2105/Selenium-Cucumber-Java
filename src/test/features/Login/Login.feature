@@ -7,5 +7,5 @@ Feature: Test Login Scenarios
     Then login should be "<login_result>"
     Examples:
       | user_id | password  | login_result |
-      | user1 | wrong pwd | unsuccessful |
+      | user1 | wrong pwd   | unsuccessful |
       | user1 | correct pwd | successful   |
