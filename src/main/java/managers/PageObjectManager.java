@@ -1,8 +1,9 @@
 package managers;
 
 import org.openqa.selenium.WebDriver;
-import pagefactory.Login.LoginPage;
-import pagefactory.businessFlows.LoginFlow;
+import pagefactory.DuckDuckGo.DuckDuckGoHomePage;
+import pagefactory.DuckDuckGo.DuckDuckGoSearchResultsPage;
+import pagefactory.businessFlows.SearchDuckDuckGoFlow;
 
 
 /**
@@ -13,28 +14,10 @@ import pagefactory.businessFlows.LoginFlow;
 public class PageObjectManager {
 
     //Flows
-
-    /**
-     * Gets login flow.
-     *
-     * @param driver the driver
-     * @return the login flow
-     */
-    public static LoginFlow getLoginFlow(WebDriver driver) {
-        return new LoginFlow(driver);
-    }
-
+    public static SearchDuckDuckGoFlow getSearchDuckDuckGoFlow(WebDriver driver){ return new SearchDuckDuckGoFlow(driver); }
 
     //Page Objects
 
-    /**
-     * Gets login page.
-     *
-     * @param driver the driver
-     * @return the login page
-     */
-    public static LoginPage getLoginPage(WebDriver driver) {
-        return new LoginPage(driver);
-    }
-
+    public static DuckDuckGoHomePage getDuckDuckGoPage(WebDriver driver) { return new DuckDuckGoHomePage(driver); }
+    public static DuckDuckGoSearchResultsPage getDuckDuckGoSearchResultsPage (WebDriver driver) { return new DuckDuckGoSearchResultsPage(driver); }
 }

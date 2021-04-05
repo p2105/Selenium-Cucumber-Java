@@ -3,7 +3,9 @@ package step_definitions;
 import io.cucumber.java.en.Given;
 import managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
+import managers.FileReaderManager;
 
+import java.io.File;
 
 /**
  * The type Given steps.
@@ -21,14 +23,11 @@ public class GivenSteps {
         driver = baseStepDefinition.getDriver();
     }
 
-
     /**
-     * User is on the login page.
+     * This is the base method for the DuckDuckGo page.
      */
-    @Given("John is on the Login Page")
-    public void userIsOnTheLoginPage() {
-        String url = PageObjectManager.getLoginFlow(driver).getAppUrl();
-        PageObjectManager.getLoginPage(driver).launchCyclos(url);
+    @Given("John is on the DuckDuckGo Page")
+    public void johnIsOnTheDuckDuckGoPage() {
+        PageObjectManager.getDuckDuckGoPage(driver).launchDuckDuckGoPage(FileReaderManager.getConfigReader().getAppUrl());
     }
-
 }

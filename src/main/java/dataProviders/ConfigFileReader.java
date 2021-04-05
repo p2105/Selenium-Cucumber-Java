@@ -77,26 +77,10 @@ public class ConfigFileReader {
     /**
      * Gets app url.
      *
-     * @param env the env
      * @return app url
      */
-    public String getAppUrl(String env) {
-        String appUrl = "";
-        switch (env.toUpperCase()) {
-            case "QA":
-                appUrl = properties.getProperty("qaUrl");
-                break;
-            case "PROD":
-                appUrl = properties.getProperty("prodUrl");
-                break;
-            case "DEV":
-                appUrl = properties.getProperty("devUrl");
-                break;
-            default:
-                throw new RuntimeException("Application environment " + env.toUpperCase() + " not specified in the " +
-                        "Configuration.properties file.");
-        }
-        return appUrl;
+    public String getAppUrl() {
+        return properties.getProperty("appUrl");
     }
 
     /**
