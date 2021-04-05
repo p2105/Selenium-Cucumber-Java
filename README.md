@@ -54,7 +54,7 @@ Expression  | Description
 @smoke and @fast | Scenarios tagged with both @smoke and @fast
 @gui or @database | Scenarios tagged with either @gui or @database
 
-##Execution
+## Execution
 - Using TestRunner class
   -  The scenario can be executed by using the TestRunner class present at "src/test/java/step_definitions/TestRunner.java"
      ```java
@@ -87,11 +87,11 @@ Expression  | Description
 
 -  The individual scenarios can be executed using the IDE like Eclipse or IntelliJ where you can right click on the scenario and select execute to execute it.
 
-##Reports:
+## Reports:
 -  The framework creates the stock cucumber html report.
 -  The report is placed at "target/Html"
 
-##Logs:
+## Logs:
 -  The framework creates logs using Log4j.
 -  Log4j properties files is present at the project's root folder with the name log4j.properties.
 -  A new log file with the naming format "Log_dd-mm-yyyy-hh-mm-ss.log" will be created for each run
