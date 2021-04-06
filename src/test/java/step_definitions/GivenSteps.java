@@ -5,8 +5,6 @@ import managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import managers.FileReaderManager;
 
-import java.io.File;
-
 /**
  * The type Given steps.
  */
@@ -28,6 +26,17 @@ public class GivenSteps {
      */
     @Given("John is on the DuckDuckGo Page")
     public void johnIsOnTheDuckDuckGoPage() {
-        PageObjectManager.getDuckDuckGoPage(driver).launchDuckDuckGoPage(FileReaderManager.getConfigReader().getAppUrl());
+        PageObjectManager.getDuckDuckGoPage(driver).launchDuckDuckGoPage(FileReaderManager.getConfigReader().getDuckDuckGoAppUrl());
     }
+
+
+    /**
+     * John navigate to the expedia website.
+     */
+    @Given("John navigate to the Expedia website")
+    public void johnNavigateToTheExpediaWebsite() {
+        PageObjectManager.getExpediaHomePage(driver).launchExpediaPage(FileReaderManager.getConfigReader().getExpediaAppUrl());
+    }
+
+
 }

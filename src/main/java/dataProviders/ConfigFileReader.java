@@ -75,13 +75,23 @@ public class ConfigFileReader {
     }
 
     /**
-     * Gets app url.
+     * Gets DuckDuckGo app url.
      *
      * @return app url
      */
-    public String getAppUrl() {
-        return properties.getProperty("appUrl");
+    public String getDuckDuckGoAppUrl() {
+        return properties.getProperty("duckDuckGoAppUrl");
     }
+
+    /**
+     * Gets Expedia app url.
+     *
+     * @return app url
+     */
+    public String getExpediaAppUrl() {
+        return properties.getProperty("expediaAppUrl");
+    }
+
 
     /**
      * Gets log level.

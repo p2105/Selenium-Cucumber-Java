@@ -42,6 +42,10 @@ public class DuckDuckGoHomePage extends WebElementHelperMethods {
         Log.info("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
     }
 
+    /**
+     * Enter the search text and click Search button.
+     *
+     */
     public void enterSearchTextAndClickSearch(String txtToBeSearched)
     {
         Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
