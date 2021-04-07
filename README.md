@@ -7,7 +7,7 @@ This is a Cucumber BDD framework developed using Java language and Page Object M
 Use the git cli to clone.
 
 ```git
-git clone https://github.com/p2105/Selenium-Cucumber-Java/tree/new_log_functionality
+git clone https://github.com/p2105/Selenium-Cucumber-Java.git
 ```
 
 ## Configuration
