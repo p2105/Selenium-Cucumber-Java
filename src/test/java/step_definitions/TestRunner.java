@@ -14,13 +14,7 @@ import org.junit.runner.RunWith;
         glue={"step_definitions"},
         monochrome = true,
         plugin = {"pretty","html:target/Html/Reports.html"},
-        tags = "@sanity1 or @sanity2"
+        tags = "@expedia or @duckduckgo"
 )
 public class TestRunner {
-
 }
-
-
-//    For example, if you are using Maven and want to run a subset of scenarios tagged with @smoke:
-//
-//        mvn test -Dcucumber.filter.tags="@smoke"

@@ -18,7 +18,7 @@ git clone https://github.com/p2105/Selenium-Cucumber-Java/tree/new_log_functiona
   - driverPath=src/main/resources/browser_driver
       The directory where all the drivers are present, currently all the drivers are within the framework folder.
   - browser=chrome
-      The browser to be used for the execution. Currently the framework supports Chrome, Firefox and IE.
+      The browser to be used for the execution. Currently the framework supports **Chrome(Version 89)** and **Firefox(Version 72.0.2)**.
   - pathToFirefoxExecutable=C:/Program Files (x86)/Mozilla Firefox/firefox.exe
       This is a mandatory setting if you use firefox browser. This is the location of the Firefox executable on your machine.
   - maxWait=20
@@ -33,9 +33,9 @@ git clone https://github.com/p2105/Selenium-Cucumber-Java/tree/new_log_functiona
 - Start by defining your Page Objects in the package "src/main/java/pagefactory"
 - You can also create reusable flows containing multiple page objects in the "src/main/java/pagefactory/businessFlows"
 - Preferably start each flow or the page object method with the line
-   `Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());`
+   `Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());`
 - And end it with
-   `Log.info("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());`
+   `Log.debug("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());`
 - This will create log messages in the logs.
 - Divide page objects and flows based on your application modules for e.g. create all the Login Page Objects under Login package or all Order flows under Order package.
 - Once the Page Objects are created start writing the Feature files, use the same application module strategy to divide your Feature files.
@@ -55,6 +55,10 @@ Expression  | Description
 @gui or @database | Scenarios tagged with either @gui or @database
 
 ## Execution
+- Using the Batch Executor
+  -  Double click on either "batchExecutor/duckduckgo.bat" to execute DuckDuckGo Test Cases
+  -  Double click on either "batchExecutor/expedia.bat" to execute Expedia Test Cases
+
 - Using TestRunner class
   -  The scenario can be executed by using the TestRunner class present at "src/test/java/step_definitions/TestRunner.java"
      ```java

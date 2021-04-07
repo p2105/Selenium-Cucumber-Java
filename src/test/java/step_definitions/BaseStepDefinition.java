@@ -10,7 +10,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import support.Log;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +17,10 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The type Base step definition.
+ * This is the Base step definition which all Step definitions must inherit
+ * to get common driver instance
+ * for before and after scenario methods
+ * for log initialization
  */
 public class BaseStepDefinition {
 
@@ -56,7 +58,7 @@ public class BaseStepDefinition {
      */
     @After
     public void afterScenario(Scenario scenario) {
-        Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         if (scenario.isFailed()) {
             Log.error("TC failed!!!");
             // Take a screenshot...
@@ -66,7 +68,7 @@ public class BaseStepDefinition {
         }
         Log.info("Inside After hooks - Closing driver");
         closeDriver();
-        Log.info("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         Log.endTestCase();
     }
 
@@ -108,10 +110,6 @@ public class BaseStepDefinition {
                 System.setProperty(FIREFOX_BIN_PROPERTY, FileReaderManager.getConfigReader().getFirefoxExecutablePath());
                 System.setProperty(FIREFOX_DRIVER_PROPERTY, FileReaderManager.getConfigReader().getDriverPath() +"/geckodriver.exe");
                 driver = new FirefoxDriver();
-                break;
-            case "IE":
-                System.setProperty(IE_DRIVER_PROPERTY, FileReaderManager.getConfigReader().getDriverPath() + "/IEDriverServer.exe");
-                driver = new InternetExplorerDriver();
                 break;
             case "CHROME":
                 System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getConfigReader().getDriverPath() + "/chromedriver.exe");

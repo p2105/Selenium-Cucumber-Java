@@ -3,11 +3,12 @@ package step_definitions.DuckDuckGo;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import managers.PageObjectManager;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import step_definitions.BaseStepDefinition;
 
 /**
- * The type Login step defs.
+ * This class contains all step defs for the DuckDuckGo application.
  */
 public class DuckDuckGoDefs {
 
@@ -41,7 +42,7 @@ public class DuckDuckGoDefs {
      */
     @Then("the page should contain results from that location")
     public void thePageShouldContainResultsFromThatLocation() {
-        PageObjectManager.getSearchDuckDuckGoFlow(driver).matchLocationName(searchText);
+        Assert.assertTrue(PageObjectManager.getSearchDuckDuckGoFlow(driver).matchLocationName(searchText));
         PageObjectManager.getDuckDuckGoSearchResultsPage(driver).takeScreenshotOfResultsPage(screenshotDirectory + "/" + searchText + ".png");
     }
 }

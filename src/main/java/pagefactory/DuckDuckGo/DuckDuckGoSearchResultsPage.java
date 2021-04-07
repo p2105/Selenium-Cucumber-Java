@@ -5,8 +5,10 @@ import org.openqa.selenium.WebDriver;
 import support.Log;
 import support.WebElementHelperMethods;
 
+import java.nio.file.FileSystems;
+
 /**
- * This the Cyclos Login Page Object and contains all the methods belonging to it.
+ * This the DuckDuckGo Search Results Page Object and contains all the methods belonging to it.
  */
 public class DuckDuckGoSearchResultsPage extends WebElementHelperMethods {
 
@@ -28,33 +30,33 @@ public class DuckDuckGoSearchResultsPage extends WebElementHelperMethods {
      * @return the string
      */
     public String getSearchBoxText(){
-        Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
-        String searchBoxText = driver.findElement(txtSearchBox).getText();
-        Log.info("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        String searchBoxText = driver.findElement(txtSearchBox).getAttribute("value");
+        Log.debug("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         return searchBoxText;
     }
 
     /**
      * Get location name from the page.
      *
-     * @return the string
+     * @return the string containing the location name from the span on the right hand side of the page
      */
     public String getLocationNameFromSpan(){
-        Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         String locationNameFromSpan = driver.findElement(spanLocationName).getText();
-        Log.info("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Exiting function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         return locationNameFromSpan;
     }
 
     /**
      * Take screenshot of results page.
      *
-     * @param path the path
+     * @param path the relative path where the screenshot has to be saved
      */
     public void takeScreenshotOfResultsPage(String path){
-        Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
         takeScreenshot(path);
-        Log.debug("Screenshot taken at " + path);
-        Log.info("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
+        Log.info("Screenshot taken at " + FileSystems.getDefault().getPath(path).normalize().toAbsolutePath().toString());
+        Log.debug("Inside function - " + new Throwable().getStackTrace()[0].getClassName() + "-" + new Throwable().getStackTrace()[0].getMethodName());
     }
 }
