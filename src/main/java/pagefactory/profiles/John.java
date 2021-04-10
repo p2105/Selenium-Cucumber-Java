@@ -1,4 +1,4 @@
-package profiles;
+package pagefactory.profiles;
 
 /**
  * This adds a persona to the Cucumber Scenarios.
@@ -9,6 +9,7 @@ public class John {
 
     public static String name = "John";
     public static int noOfChildrenTravelling = 1;
+    public static int ageChild1 = 3;
     public static int noOfAdultsTravelling = 1;
     public static int noOfDaysInAdvanceToTravel = 90;
     public static int noOfDaysPlanned = 10;
